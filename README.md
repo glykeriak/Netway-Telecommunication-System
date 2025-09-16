@@ -1,116 +1,77 @@
-# Netway-Telecommunication-System
+# Netway Telecommunication System
 
-#Overview
+**Overview**
+---
+This project is a **web application** for managing customers, sellers, and mobile service packages.  
+It supports multiple user roles with different permissions (**Client, Seller, Administrator**) and provides functionality such as:
 
-This project is a web application for managing customers, sellers, and mobile service packages.
-It supports multiple user roles with different permissions (Client, Seller, Administrator) and provides functionality such as:
+- Issuing and paying bills  
+- Managing customers and sellers  
+- Managing service packages  
+- Viewing call history  
 
-Issuing and paying bills
+The application is developed using **Java Servlets** with a **MySQL database**, **HTML/CSS frontend**, and deployed on **Apache Tomcat**.
 
-Managing customers and sellers
+---
 
-Managing service packages
-
-Viewing call history
-
-The application is developed using Java Servlets with a MySQL database, HTML/CSS frontend, and deployed on Apache Tomcat.
-
-System Architecture
-
+**System Architecture**
+---
 The overall system architecture is divided into four main parts:
 
-Frontend (HTML/CSS/JS)
+### Frontend (HTML/CSS/JS)
+- Provides the user interface for all three roles (Client, Seller, Admin).  
+- Includes pages like `index.html`, `AdminPage.html`, `ClientPage.html`, `SellerPage.html`.  
 
-Provides the user interface for all three roles (Client, Seller, Admin).
+### Backend (Java Servlets)
+- Implements logic for login/logout, session management, and CRUD operations on customers, sellers, packages, and bills.  
+- Example servlets: `LoginServlet`, `AddPacketServlet`, `DeleteSellerServlet`, `PayBillServlet`, `InvoiceServlet`.  
 
-Includes pages like index.html, AdminPage.html, ClientPage.html, SellerPage.html.
+### Database Manager
+- Handles all SQL operations towards the database.  
+- Supports secure login with salted+hashed passwords.  
 
-Backend (Java Servlets)
+### Database (MySQL)
+- Main tables: `User`, `Client`, `Seller`, `Admin`, `Packet`, `Bill`, `Program`, `PhoneNumber`, `Call`.  
 
-Implements logic for login/logout, session management, and CRUD operations on customers, sellers, packages, and bills.
+---
 
-Servlets include: LoginServlet, AddPacketServlet, DeleteSellerServlet, PayBillServlet, InvoiceServlet.
+**Roles & Functionality**
+---
 
-Database Manager
+### Client
+- View bills  
+- Pay bills  
+- View call history  
+- View available programs  
 
-Handles all SQL operations towards the database.
+### Seller
+- Register new clients  
+- Link client to a program  
+- Issue bills  
+- View clients  
+- Delete subscriptions  
 
-Supports secure login with salted+hashed passwords.
+### Administrator
+- Create new sellers  
+- Create new service packages  
+- Search/update packages  
+- Delete sellers  
+- View all clients and sellers  
 
-Database (MySQL)
+---
 
-Tables: User, Client, Seller, Admin, Packet, Bill, Program, PhoneNumber, Call.
+**Security**
+---
+- Passwords stored with **Salted + Hashed (SHA-256)**.  
+- **Session management** for user tracking.  
+- **Session invalidation & cookie deletion** upon logout.  
 
-Roles & Functionality
-Client
+---
 
-View bills
-
-Pay bills
-
-View call history
-
-View available programs
-
-Seller
-
-Register new clients
-
-Link client to a program
-
-Issue bills
-
-View clients
-
-Delete subscriptions
-
-Administrator
-
-Create new sellers
-
-Create new service packages
-
-Search/update packages
-
-Delete sellers
-
-View all clients and sellers
-
-Security
-
-Passwords stored with Salted + Hashed (SHA-256).
-
-Session management for user tracking.
-
-Session invalidation & cookie deletion upon logout.
-
-Deployment
-
-Create a MySQL database using the project’s schema.
-
-Configure DatabaseManager.java with database connection details.
-
-Install and run Apache Tomcat 9+.
-
-Deploy the .war file to Tomcat.
-
-Access the application via browser:
-
-http://localhost:8080/<project-name>
-
-Examples
-Example: Client
-
-Logs in via ClientPage.html
-
-Views pending bills
-
-Selects "Pay" → triggers PayBillServlet → database updated
-
-Example: Administrator
-
-Logs in via AdminPage.html
-
-Creates a new package via AddPacketServlet
-
-Views all available packages on DisplayPackets.html
+**Deployment**
+---
+1. Create a MySQL database using the project’s schema.  
+2. Configure `DatabaseManager.java` with database connection details.  
+3. Install and run **Apache Tomcat 9+**.  
+4. Deploy the `.war` file to Tomcat.  
+5. Access the application via browser:  
