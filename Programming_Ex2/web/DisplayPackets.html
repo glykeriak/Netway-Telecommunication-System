@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Display and Edit Packets</title>
+        <style>
+            body {
+                background-image: url('backimage.jpg');
+                background-size: cover;
+                background-position: center;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                background-color: rgba(255, 255, 255, 0.8);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                position: absolute;
+                width: 100%;
+                left: 0;
+            }
+
+            .user-name {
+                font-size: 18px;
+                font-weight: bold;
+                color: #4a7ba6;
+                margin-left: 10px;
+            }
+
+            .logout-button {
+                background-color: #4a7ba6;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                padding: 10px 20px;
+                text-decoration: none;
+                transition: background-color 0.3s;
+                margin-right: 40px;
+            }
+
+            .logout-button:hover {
+                background-color: #bc85a3;
+            }
+
+            .container {
+                background-color: #fff;
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                margin: 0 auto;
+                margin-top: 100px;
+                max-width: 800px;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+
+            table, th, td {
+                border: 1px solid #4a7ba6;
+                padding: 10px;
+            }
+
+            th {
+                background-color: #4a7ba6;
+                color: white;
+            }
+
+            td {
+                text-align: left;
+            }
+
+            .edit-button {
+                background-color: #4a7ba6;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                padding: 5px 10px;
+                text-decoration: none;
+                transition: background-color 0.3s;
+            }
+
+            .edit-button:hover {
+                background-color: #bc85a3;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="user-name">Administrator</div>
+            <a href="./logout" class="logout-button">Log Out</a>
+        </div>
+        <div class="container">
+            <h2>Available Packets</h2>
+            <table id="packetsTable">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Duration</th>
+                    <th>Actions</th>
+                </tr>
+            </table>
+        </div>
+        <script>
+            function fetchPackets() {
+                fetch('/displayPackets')
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById('packetsTable').innerHTML += data;
+                        });
+            }
+            window.onload = fetchPackets;
+        </script>
+    </body>
+</html>

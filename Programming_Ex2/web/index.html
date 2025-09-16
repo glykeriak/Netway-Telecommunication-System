@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="el">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NetWay Login Page</title>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function validateSignInForm() {
+                var email = document.forms["SignIn"]["email"].value;
+                var password = document.forms["SignIn"]["password"].value;
+                if (email == "" && password == "") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error...',
+                        text: 'Please fill out your username and password'
+                    });
+                    return false;
+                }
+                if (password == "") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error...',
+                        text: 'Please fill out your password'
+                    });
+                    return false;
+                }
+                if (email == "") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error...',
+                        text: 'Please fill out your username'
+                    });
+                    return false;
+                }
+            }
+
+            function validateSignUpForm() {
+                return true;
+            }
+
+            function RestrictSpace(event) {
+                if (event.keyCode == 32) {
+                    return false;
+                }
+            }
+
+            function checkalphabet(string) {
+                var regName = /^[a-zA-Z ]+$/;
+                if (!regName.test(string)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function redirectToSignUp() {
+                window.location.href = './new_client.html';
+            }
+        </script>
+        <style>
+            body {
+                background-image: url('backimage.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                color: #31393e;
+            }
+
+            .header {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                padding: 10px 20px;
+                background-color: rgba(255, 255, 255, 0.8);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                position: absolute;
+                width: 100%;
+                left: 0;
+            }
+
+            .logout-button {
+                background-color: #4a7ba6;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                padding: 10px 20px;
+                text-decoration: none;
+                transition: background-color 0.3s;
+                margin-right: 40px;
+            }
+
+            .logout-button:hover {
+                background-color: #bc85a3;
+            }
+
+            .container {
+                background-color: #fff;
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                margin: 0 auto;
+                margin-top: 100px;
+                max-width: 400px;
+            }
+
+            h2 {
+                color: #31393e;
+                margin-bottom: 30px;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+                color: #31393e;
+                font-weight: bold;
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                width: 250px;
+                height: 30px;
+                border-radius: 5px;
+                border: 1px solid #457fb1;
+                padding: 5px;
+                margin-bottom: 15px;
+            }
+
+            input[type="submit"] {
+                width: 150px;
+                height: 40px;
+                background-color: #457fb1;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                margin: 5px;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #79b4d2;
+            }
+
+            .text-box {
+                text-align: center;
+                font-size: 50px;
+                text-transform: uppercase;
+                font-weight: bold;
+                animation: mover 6s linear infinite;
+                margin-top: 0;
+                display: flex;
+                justify-content: center;
+                color: #cda790;
+            }
+
+            span {
+                animation: mover 6s linear infinite;
+                display: inline-block;
+                font-weight: bolder;
+            }
+
+            @keyframes mover {
+                0% {
+                    text-shadow: 0 0 30px rgba(0, 0, 0, 0);
+                }
+                50% {
+                    text-shadow: 0 0 30px rgba(0, 0, 0, 0.30);
+                    transform: translateY(30px);
+                }
+                100% {
+                    text-shadow: 0 0 30px rgba(0, 0, 0, 0);
+                }
+            }
+
+            span:nth-child(1) {
+                animation-delay: 0.5s;
+                color: #457fb1;
+            }
+
+            span:nth-child(2) {
+                animation-delay: 1s;
+                color: #79b4d2;
+            }
+
+            span:nth-child(3) {
+                animation-delay: 1.5s;
+                color: #457fb1;
+            }
+
+            span:nth-child(4) {
+                animation-delay: 2s;
+                color: #79b4d2;
+            }
+
+            span:nth-child(5) {
+                animation-delay: 2.5s;
+                color: #457fb1;
+            }
+
+            span:nth-child(6) {
+                animation-delay: 3s;
+                color: #79b4d2;
+            }
+
+            .button-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .signup-button {
+                width: 150px;
+                height: 40px;
+                background-color: #4a7ba6;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                padding: 10px 20px;
+                text-decoration: none;
+                transition: background-color 0.3s;
+                margin-right: 40px;
+                position: absolute;
+                top: 10px;
+                left: 10px;
+            }
+
+            .signup-button:hover {
+                background-color: #bc85a3;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="text-box">
+            <span>N</span>
+            <span>e</span>
+            <span>t</span>
+            <span>W</span>
+            <span>a</span>
+            <span>y</span>
+        </div>
+        <div class="container">
+            <h2>Sign In</h2>
+            <form name="SignIn" action="./login" method="POST" onsubmit="return validateSignInForm()">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" onkeydown="RestrictSpace(event)"><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" onkeydown="RestrictSpace(event)"><br><br>
+                <div class="button-container">
+                    <input type="submit" value="Sign In">
+                </div>
+            </form>
+        </div>
+        <button class="signup-button" onclick="redirectToSignUp()">Sign Up</button>
+    </body>
+</html>

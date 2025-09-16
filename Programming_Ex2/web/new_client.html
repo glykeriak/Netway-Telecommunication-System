@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register Client</title>
+        <script>
+            function validateForm() {
+                var firstname = document.forms["clientForm"]["firstname"].value;
+                var lastname = document.forms["clientForm"]["lastname"].value;
+                var email = document.forms["clientForm"]["email"].value;
+                var afm = document.forms["clientForm"]["afm"].value;
+                var phone = document.forms["clientForm"]["phone"].value;
+                var code = document.forms["clientForm"]["code"].value;
+
+                var afmRegex = /^\d{9}$/;
+                var phoneRegex = /^\d{10}$/;
+                var codeRegex = /^\d{6}$/;
+
+                if (firstname == "" || lastname == "" || email == "" || code == "" || afm == "" || phone == "") {
+                    alert("Please fill out all fields");
+                    return false;
+                }
+
+                if (!afmRegex.test(afm)) {
+                    alert("Please enter a valid AFM (9 digits)");
+                    return false;
+                }
+
+                if (!phoneRegex.test(phone)) {
+                    alert("Please enter a valid phone number (10 digits)");
+                    return false;
+                }
+
+                if (!codeRegex.test(code)) {
+                    alert("Please enter a valid 6-digit code");
+                    return false;
+                }
+
+                return true;
+            }
+
+            function RestrictSpace(event) {
+                if (event.keyCode == 32) {
+                    return false;
+                }
+            }
+
+            function clearFields() {
+                document.getElementById('clientForm').reset();
+            }
+
+            window.onload = function () {
+                clearFields();
+
+                const userName = getCookie("emailCookie");
+                if (userName) {
+                    document.getElementById("user-name").innerText = "Welcome, " + userName;
+                }
+            };
+
+            function getCookie(name) {
+                let cookieArr = document.cookie.split(";");
+                for (let i = 0; i < cookieArr.length; i++) {
+                    let cookiePair = cookieArr[i].split("=");
+                    if (name === cookiePair[0].trim()) {
+                        return decodeURIComponent(cookiePair[1]);
+                    }
+                }
+                return null;
+            }
+        </script>
+        <style>
+            body {
+                background-image: url('backimage.jpg');
+                background-size: cover;
+                background-position: center;
+                font-family: Arial, sans-serif;
+                margin: 0;
+            }
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                background-color: rgba(255, 255, 255, 0.8);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                position: fixed;
+                width: 100%;
+                top: 0;
+                left: 0;
+                z-index: 1000;
+            }
+
+            .header-left {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .header-buttons {
+                display: flex;
+                gap: 10px;
+            }
+
+            .logout-button, .session-button {
+                background-color: #4a7ba6;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                padding: 10px 20px;
+                text-decoration: none;
+                transition: background-color 0.3s;
+                z-index: 2;
+            }
+
+            .logout-button:hover, .session-button:hover {
+                background-color: #bc85a3;
+            }
+
+            .user-name {
+                font-size: 18px;
+                font-weight: bold;
+                color: #4a7ba6;
+                margin-bottom: 10px;
+            }
+
+            .container {
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                margin: 0 auto;
+                margin-top: 150px;
+                max-width: 400px;
+            }
+
+            .netway-container {
+                text-align: center;
+                font-size: 50px;
+                text-transform: uppercase;
+                font-weight: bold;
+                animation: mover 6s linear infinite;
+                margin-top: 60px;
+                display: flex;
+                justify-content: center;
+                position: relative;
+                z-index: 1001;
+            }
+
+            .netway-container span {
+                animation: mover 6s linear infinite;
+                display: inline-block;
+                color: #4a7ba6;
+                font-weight: bolder;
+            }
+
+            @keyframes mover {
+                0% {
+                    text-shadow: 0 0 30px rgba(0, 0, 0, 0);
+                }
+                50% {
+                    text-shadow: 0 0 30px rgba(0, 0, 0, 0.30);
+                    transform: translateY(30px);
+                }
+                100% {
+                    text-shadow: 0 0 30px rgba(0, 0, 0, 0);
+                }
+            }
+
+            .netway-container span:nth-child(1) {
+                animation-delay: 0.5s;
+                color: #457fb1;
+            }
+
+            .netway-container span:nth-child(2) {
+                animation-delay: 1s;
+                color: #79b4d2;
+            }
+
+            .netway-container span:nth-child(3) {
+                animation-delay: 1.5s;
+                color: #457fb1;
+            }
+
+            .netway-container span:nth-child(4) {
+                animation-delay: 2s;
+                color: #79b4d2;
+            }
+
+            .netway-container span:nth-child(5) {
+                animation-delay: 2.5s;
+                color: #457fb1;
+            }
+
+            .netway-container span:nth-child(6) {
+                animation-delay: 3s;
+                color: #79b4d2;
+            }
+
+            h2 {
+                color: #4a7ba6;
+                margin-bottom: 30px;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+                color: #4a7ba6;
+                font-weight: bold;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="password"] {
+                width: 250px;
+                height: 30px;
+                border-radius: 5px;
+                border: 1px solid #4a7ba6;
+                padding: 5px;
+                margin-bottom: 15px;
+            }
+
+            input[type="submit"] {
+                width: 250px;
+                height: 40px;
+                background-color: #4a7ba6;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                margin: 5px;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #bc85a3;
+            }
+
+            .button-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 20px;
+            }
+
+            .back-button {
+                width: 250px;
+                height: 40px;
+                background-color: #4a7ba6;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                margin-top: 20px;
+                text-decoration: none;
+                line-height: 40px;
+                transition: background-color 0.3s;
+                display: block;
+            }
+
+            .back-button:hover {
+                background-color: #bc85a3;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="header-left">
+                <div id="user-name" class="user-name"></div>
+                <form action="show-session" method="post" style="margin: 0;">
+                    <input type="submit" value="Show Session Info" class="session-button">
+                </form>
+            </div>
+            <a href="./logout" class="logout-button">Log Out</a>
+        </div>
+        <div class="netway-container">
+            <span>N</span>
+            <span>e</span>
+            <span>t</span>
+            <span>W</span>
+            <span>a</span>
+            <span>y</span>
+        </div>
+        <div class="container">
+            <h2>Register Client</h2>
+            <form id="clientForm" name="clientForm" action="./addclient" method="POST" onsubmit="return validateForm()">
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" name="firstname"><br><br>
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <label for="afm">AFM:</label>
+                <input type="text" id="afm" name="afm" maxlength="9" onkeydown="RestrictSpace(event)"><br><br>
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" maxlength="10" onkeydown="RestrictSpace(event)"><br><br>
+                <label for="code">6-Digit Code:</label>
+                <input type="password" id="code" name="code" maxlength="6" onkeydown="RestrictSpace(event)"><br><br>
+                <div class="button-container">
+                    <input type="submit" value="Register">
+                    <a href="SellerPage.html" class="back-button">Go Back</a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

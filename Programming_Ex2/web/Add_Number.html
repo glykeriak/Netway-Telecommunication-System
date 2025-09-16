@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add New Phone Number</title>
+        <style>
+            body {
+                background-image: url('backimage.jpg');
+                background-size: cover;
+                background-position: center;
+                font-family: Arial, sans-serif;
+                margin: 0;
+            }
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                background-color: rgba(255, 255, 255, 0.8);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                position: absolute;
+                width: 100%;
+                left: 0;
+            }
+
+            .user-name {
+                font-size: 18px;
+                font-weight: bold;
+                color: #4a7ba6;
+                margin-left: 10px;
+            }
+
+            .logout-button {
+                background-color: #4a7ba6;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                padding: 10px 20px;
+                text-decoration: none;
+                transition: background-color 0.3s;
+                margin-right: 40px;
+            }
+
+            .logout-button:hover {
+                background-color: #bc85a3;
+            }
+
+            .container {
+                background-color: #fff;
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                margin: 0 auto;
+                margin-top: 100px;
+                max-width: 400px;
+            }
+
+            .netway-container {
+                text-align: center;
+                font-size: 50px;
+                text-transform: uppercase;
+                font-weight: bold;
+                animation: mover 6s linear infinite;
+                margin-top: 60px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .netway-container span {
+                animation: mover 6s linear infinite;
+                display: inline-block;
+                color: #4a7ba6;
+                font-weight: bolder;
+            }
+
+            @keyframes mover {
+                0% {
+                    text-shadow: 0 0 30px rgba(0, 0, 0, 0);
+                }
+                50% {
+                    text-shadow: 0 0 30px rgba(0, 0, 0, 0.30);
+                    transform: translateY(30px);
+                }
+                100% {
+                    text-shadow: 0 0 30px rgba(0, 0, 0, 0);
+                }
+            }
+
+            .netway-container span:nth-child(1) {
+                animation-delay: 0.5s;
+                color: #457fb1;
+            }
+
+            .netway-container span:nth-child(2) {
+                animation-delay: 1s;
+                color: #79b4d2
+            }
+
+            .netway-container span:nth-child(3) {
+                animation-delay: 1.5s;
+                color: #457fb1;
+            }
+
+            .netway-container span:nth-child(4) {
+                animation-delay: 2s;
+                color: #79b4d2
+            }
+
+            .netway-container span:nth-child(5) {
+                animation-delay: 2.5s;
+                color: #457fb1;
+            }
+
+            .netway-container span:nth-child(6) {
+                animation-delay: 3s;
+                color: #79b4d2
+            }
+
+            h2 {
+                color: #4a7ba6;
+                margin-bottom: 30px;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+                color: #4a7ba6;
+                font-weight: bold;
+            }
+
+            input[type="text"] {
+                width: calc(100% - 22px);
+                height: 30px;
+                border-radius: 5px;
+                border: 1px solid #4a7ba6;
+                padding: 5px;
+                margin-bottom: 15px;
+            }
+
+            input[type="submit"] {
+                width: 100%;
+                height: 40px;
+                background-color: #4a7ba6;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                margin: 5px;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #bc85a3;
+            }
+
+            .button-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="user-name">Όνομα Χρήστη</div>
+            <a href="#" class="logout-button">Log Out</a>
+        </div>
+        <div class="netway-container">
+            <span>N</span>
+            <span>e</span>
+            <span>t</span>
+            <span>W</span>
+            <span>a</span>
+            <span>y</span>
+        </div>
+        <div class="container">
+            <h2>Add New Phone Number</h2>
+            <form name="AddPhone" action="./addphone" method="POST">
+                <label for="phoneNumber">New Phone Number:</label>
+                <input type="text" id="phoneNumber" name="phoneNumber"><br><br>
+                <div class="button-container">
+                    <input type="submit" value="Add">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
