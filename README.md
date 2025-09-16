@@ -74,4 +74,21 @@ The overall system architecture is divided into four main parts:
 2. Configure `DatabaseManager.java` with database connection details.  
 3. Install and run **Apache Tomcat 9+**.  
 4. Deploy the `.war` file to Tomcat.  
-5. Access the application via browser:  
+5. Access the application via browser:  http://localhost:8080/
+
+---
+
+**Examples**
+---
+### Example: Client
+1. Logs in via `ClientPage.html`  
+2. Views pending bills  
+3. Selects **"Pay"** → triggers `PayBillServlet` → database updated  
+
+### Example: Administrator
+1. Logs in via `AdminPage.html`  
+2. Creates a new package via `AddPacketServlet`  
+3. Views all available packages on `DisplayPackets.html`  
+
+---
+
